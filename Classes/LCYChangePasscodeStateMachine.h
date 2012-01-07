@@ -22,14 +22,14 @@ typedef enum
 	LCYChangePasscodeStates state_;
 
 	NSString *existingPasscode_;
-	NSString *newPasscode_;
+	NSString *updatedPasscode_;
 	
 	NSString *currentErrorText_;
 }
 
 
 @property (nonatomic, copy) NSString* existingPasscode;
-@property (nonatomic, copy) NSString* newPasscode;
+@property (nonatomic, copy) NSString* updatedPasscode;
 
 @property (nonatomic, readonly) NSString *currentErrorText;
 

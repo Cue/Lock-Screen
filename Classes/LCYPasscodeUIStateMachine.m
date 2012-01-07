@@ -11,7 +11,7 @@
 
 @implementation LCYPasscodeUIStateMachine
 
-@dynamic newPasscode;
+@dynamic updatedPasscode;
 @dynamic existingPasscode;
 @dynamic currentErrorText;
 

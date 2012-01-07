@@ -130,19 +130,20 @@ NSString* NSStringFromLCYTurnOffPasscodeStates (LCYTurnOffPasscodeStates state)
 	return (state_ == LCYTurnOffPasscodeStatesDone);
 }
 
-- (NSString *) newPasscode;
+- (NSString *) updatedPasscode;
 {
 	return nil;
 }
 
-- (void) setNewPasscode: (NSString *) nu;
+- (void) setUpdatedPasscode:(NSString *)updatedPasscode;
 {
+    
 }
 
 - (void) reset;
 {
 	state_ = LCYTurnOffPasscodeStatesConfirmExistingPassword;
-	self.newPasscode = nil;
+	self.updatedPasscode = nil;
 	self.existingPasscode = nil;
 	currentErrorText_ = nil;
 }

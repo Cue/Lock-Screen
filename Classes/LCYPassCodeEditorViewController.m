@@ -204,7 +204,7 @@
         if (stateMachine_ == enterPasscodeStateMachine_) {
             [self.delegate passcodeEditorDidUnlock:self];
         } else {
-            [self.delegate passcodeEditor:self newCode:stateMachine_.newPasscode];            
+            [self.delegate passcodeEditor:self newCode:stateMachine_.updatedPasscode];            
         }
 	}
 	else 

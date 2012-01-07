@@ -48,7 +48,7 @@ NSString* NSStringFromLCYEnterPasscodeStates (LCYEnterPasscodeStates state)
 	return self;
 }
 
-- (NSString*) newPasscode;
+- (NSString*) updatedPasscode;
 {
     return self.existingPasscode;
 }

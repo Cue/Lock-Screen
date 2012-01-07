@@ -35,14 +35,14 @@ NSString* NSStringFromLCYChangePasscodeStates (LCYChangePasscodeStates state)
 
 @implementation LCYChangePasscodeStateMachine
 
-@synthesize newPasscode = newPasscode_;
+@synthesize updatedPasscode = updatedPasscode_;
 @synthesize existingPasscode = existingPasscode_;
 @synthesize currentErrorText = currentErrorText_;
 
 - (void) dealloc;
 {
 	self.existingPasscode = nil;
-	self.newPasscode = nil;
+	self.updatedPasscode = nil;
 	currentErrorText_ = nil;
 	
 	[super dealloc];
@@ -63,7 +63,7 @@ NSString* NSStringFromLCYChangePasscodeStates (LCYChangePasscodeStates state)
 	return [NSString stringWithFormat:@"state: %@ | existingPasscode: %@ | new: %@", 
 			NSStringFromLCYChangePasscodeStates(state_),
 			self.existingPasscode,
-			self.newPasscode
+			self.updatedPasscode
 			];
 }
 
@@ -99,7 +99,7 @@ NSString* NSStringFromLCYChangePasscodeStates (LCYChangePasscodeStates state)
 		case LCYChangePasscodeStatesGetNewPassword:
 			break;
 		case LCYChangePasscodeStatesConfirmNewPassword:
-			self.newPasscode = nil;
+			self.updatedPasscode = nil;
 			currentErrorText_ = @"Passcode did not match. Try again.";
 			state_ = LCYChangePasscodeStatesGetNewPassword;
 			break;
@@ -127,12 +127,12 @@ NSString* NSStringFromLCYChangePasscodeStates (LCYChangePasscodeStates state)
 			break;
 			
 		case LCYChangePasscodeStatesGetNewPassword:
-			self.newPasscode = input;
+			self.updatedPasscode = input;
 			[self successTransition];
 			break;
 			
 		case LCYChangePasscodeStatesConfirmNewPassword:
-			if ([self.newPasscode isEqualToString:input])
+			if ([self.updatedPasscode isEqualToString:input])
 			{
 				[self successTransition];
 			}
@@ -185,7 +185,7 @@ NSString* NSStringFromLCYChangePasscodeStates (LCYChangePasscodeStates state)
 {
 	state_ = LCYChangePasscodeStatesConfirmExistingPassword;
 	currentErrorText_ = nil;
-	self.newPasscode = nil;
+	self.updatedPasscode = nil;
 	self.existingPasscode = nil;
 }
 

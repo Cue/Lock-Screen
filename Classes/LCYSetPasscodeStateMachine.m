@@ -29,12 +29,12 @@ NSString* NSStringFromLCYSetPasscodeStates (LCYSetPasscodeStates state)
 
 @implementation LCYSetPasscodeStateMachine
 
-@synthesize newPasscode = newPasscode_;
+@synthesize updatedPasscode = updatedPasscode_;
 @synthesize currentErrorText = currentErrorText_;
 
 - (void) dealloc;
 {
-	self.newPasscode = nil;
+	self.updatedPasscode = nil;
 	currentErrorText_ = nil;
 	
 	[super dealloc];
@@ -54,7 +54,7 @@ NSString* NSStringFromLCYSetPasscodeStates (LCYSetPasscodeStates state)
 {
 	return [NSString stringWithFormat:@"state: %@ | new: %@", 
 			NSStringFromLCYSetPasscodeStates(state_),
-			self.newPasscode
+			self.updatedPasscode
 			];
 }
 
@@ -84,7 +84,7 @@ NSString* NSStringFromLCYSetPasscodeStates (LCYSetPasscodeStates state)
 		case LCYSetPasscodeStatesGetNewPassword:
 			break;
 		case LCYSetPasscodeStatesConfirmNewPassword:
-			self.newPasscode = nil;
+			self.updatedPasscode = nil;
 			currentErrorText_ = @"Passcode did not match. Try again.";
 			state_ = LCYSetPasscodeStatesGetNewPassword;
 			break;
@@ -101,12 +101,12 @@ NSString* NSStringFromLCYSetPasscodeStates (LCYSetPasscodeStates state)
 	switch (state_) 
 	{			
 		case LCYSetPasscodeStatesGetNewPassword:
-			self.newPasscode = input;
+			self.updatedPasscode = input;
 			[self successTransition];
 			break;
 			
 		case LCYSetPasscodeStatesConfirmNewPassword:
-			if ([self.newPasscode isEqualToString:input])
+			if ([self.updatedPasscode isEqualToString:input])
 			{
 				[self successTransition];
 			}
@@ -156,7 +156,7 @@ NSString* NSStringFromLCYSetPasscodeStates (LCYSetPasscodeStates state)
 {
 	state_ = LCYSetPasscodeStatesGetNewPassword;
 	currentErrorText_ = nil;
-	self.newPasscode = nil;
+	self.updatedPasscode = nil;
 }
 
 @end
