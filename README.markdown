@@ -17,3 +17,7 @@ The macros in the file LCYCompatibilityMacros.h are from:
 ### [Krishna Kotecha](http://logiccolony.com)
 
 To blame for most of it. Use at your own risk, etc. 
+
+### [Aaron Sarazan](https://www.greplin.com)
+
+Update to make a cancelable lock with success callback
