@@ -20,7 +20,6 @@
 - (void) hideBanner: (UIView *) bannerView;
 - (BOOL) isShowingBanner: (UIView *) bannerView;
 
-- (NSString *) passCode;
 @end
 
 
