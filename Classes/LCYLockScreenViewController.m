@@ -32,6 +32,8 @@
 @synthesize delegate = delegate_;
 @synthesize passCode = passCode_;
 
+@synthesize maxFailedAttempts = maxFailedAttempts_;
+
 #pragma mark -
 #pragma mark Memory Management
 
@@ -89,10 +91,10 @@
 		result = YES;
 	}
 	else 
-	{
-		[self.enterPassCodeBanner removeFromSuperview];		
-		[self showBanner:self.wrongPassCodeBanner];
-		[self resetUIState];
+	{                 
+        [self.enterPassCodeBanner removeFromSuperview];		
+        [self showBanner:self.wrongPassCodeBanner];
+        [self resetUIState];            
 	}
 	
 	return result;
@@ -106,7 +108,11 @@
 	if ( [self authenticatePassCode: userInput] )	
 	{
 		[self.delegate lockScreen:self unlockedApp:YES];
-	}	
+	} else if (self.maxFailedAttempts && 
+               ++failedAttempts_ >= self.maxFailedAttempts) 
+    {
+        [self.delegate lockScreen:self unlockedApp:NO];
+    }
 }
 
 

@@ -24,6 +24,9 @@
 	id<LCYLockScreenDelegate> delegate_;
 	
 	NSString *passCode_;	
+    
+    NSUInteger failedAttempts_;
+    NSUInteger maxFailedAttempts_;
 }
 
 
@@ -33,6 +36,8 @@
 @property (nonatomic, assign) IBOutlet id<LCYLockScreenDelegate> delegate;
 
 @property (nonatomic, copy) NSString* passCode;
+
+@property NSUInteger maxFailedAttempts;
 
 @end
 
