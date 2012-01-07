@@ -15,6 +15,7 @@
 		28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD735F0D9D9599002E5188 /* MainWindow.xib */; };
 		28C286E10D94DF7D0034E888 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C286E00D94DF7D0034E888 /* RootViewController.m */; };
 		28F335F11007B36200424DE2 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28F335F01007B36200424DE2 /* RootViewController.xib */; };
+		90F7EDA314B7BB16000057F9 /* LCYEnterPasscodeStateMachine.m in Sources */ = {isa = PBXBuildFile; fileRef = 90F7EDA214B7BB16000057F9 /* LCYEnterPasscodeStateMachine.m */; };
 		D79181A5129A95F800F3C567 /* LCYPassCodeEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D79181A3129A95F800F3C567 /* LCYPassCodeEditorViewController.m */; };
 		D79181A6129A95F800F3C567 /* LCYPassCodeEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D79181A4129A95F800F3C567 /* LCYPassCodeEditorViewController.xib */; };
 		D79A38B912A16C5A00BF7C82 /* LCYAppSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = D79A38B812A16C5A00BF7C82 /* LCYAppSettings.m */; };
@@ -46,6 +47,8 @@
 		28F335F01007B36200424DE2 /* RootViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* LockScreen-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "LockScreen-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		90F7EDA114B7BB16000057F9 /* LCYEnterPasscodeStateMachine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCYEnterPasscodeStateMachine.h; sourceTree = "<group>"; };
+		90F7EDA214B7BB16000057F9 /* LCYEnterPasscodeStateMachine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCYEnterPasscodeStateMachine.m; sourceTree = "<group>"; };
 		D727B81712EB8B5E0038C214 /* LCYCompatibilityMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCYCompatibilityMacros.h; sourceTree = "<group>"; };
 		D727B87612EC9EFF0038C214 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		D79181A2129A95F800F3C567 /* LCYPassCodeEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCYPassCodeEditorViewController.h; sourceTree = "<group>"; };
@@ -214,10 +217,12 @@
 			children = (
 				D7C5438C129EB62200ACAC4C /* LCYPasscodeUIStateMachine.h */,
 				D7C5438D129EB62200ACAC4C /* LCYPasscodeUIStateMachine.m */,
-				D7C54473129F5AD800ACAC4C /* LCYSetPasscodeStateMachine.h */,
-				D7C54474129F5AD800ACAC4C /* LCYSetPasscodeStateMachine.m */,
+				90F7EDA114B7BB16000057F9 /* LCYEnterPasscodeStateMachine.h */,
+				90F7EDA214B7BB16000057F9 /* LCYEnterPasscodeStateMachine.m */,
 				D7A25D7F129C854D0028E793 /* LCYChangePasscodeStateMachine.h */,
 				D7A25D80129C854D0028E793 /* LCYChangePasscodeStateMachine.m */,
+				D7C54473129F5AD800ACAC4C /* LCYSetPasscodeStateMachine.h */,
+				D7C54474129F5AD800ACAC4C /* LCYSetPasscodeStateMachine.m */,
 				D7C54377129EB04400ACAC4C /* LCYTurnOffPasscodeStateMachine.h */,
 				D7C54378129EB04400ACAC4C /* LCYTurnOffPasscodeStateMachine.m */,
 			);
@@ -334,6 +339,7 @@
 				D79A398712A289B600BF7C82 /* LCYPasscodeInputViewController.m in Sources */,
 				D79A3A5012A2B3C800BF7C82 /* LCYLockDigitView.m in Sources */,
 				D79A3A8512A2C67900BF7C82 /* LCYBannerView.m in Sources */,
+				90F7EDA314B7BB16000057F9 /* LCYEnterPasscodeStateMachine.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

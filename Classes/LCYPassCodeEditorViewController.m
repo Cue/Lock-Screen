@@ -10,6 +10,7 @@
 #import "LCYChangePasscodeStateMachine.h"
 #import "LCYTurnOffPasscodeStateMachine.h"
 #import "LCYSetPasscodeStateMachine.h"
+#import "LCYEnterPasscodeStateMachine.h"
 
 @interface LCYPassCodeEditorViewController(InputHandling)
 
@@ -37,6 +38,8 @@
 
 @synthesize passCode = passCode_;
 
+@synthesize callback = callback_;
+
 - (void) dealloc 
 {
 	self.delegate = nil;
@@ -53,6 +56,9 @@
 	
 	[setPasscodeStateMachine_ release];
 	setPasscodeStateMachine_ = nil;
+    
+    [enterPasscodeStateMachine_ release];
+    enterPasscodeStateMachine_ = nil;
 	
 	//[stateMachine_ release];
 	stateMachine_ = nil;
@@ -70,6 +76,7 @@
 		changePasscodeStateMachine_ = [[LCYChangePasscodeStateMachine alloc] init];
 		turnOffPasscodeStateMachine_ = [[LCYTurnOffPasscodeStateMachine alloc] init];
 		setPasscodeStateMachine_ = [[LCYSetPasscodeStateMachine alloc] init];
+        enterPasscodeStateMachine_ = [[LCYEnterPasscodeStateMachine alloc] init];
 	}
 	return self;
 }
@@ -133,12 +140,23 @@
 	[self makeCancelButton];	
 }
 
+
+- (void) attemptToAccessSecureScreen;
+{
+	self.title = @"Enter Passcode";
+	stateMachine_ = enterPasscodeStateMachine_;
+	[stateMachine_ reset];	    
+	stateMachine_.existingPasscode = self.passCode;
+	
+	[self makeCancelButton];	    
+}
+
 #pragma mark -
 #pragma mark IBActions
 
 - (IBAction) cancel;
 {
-	[delegate_ passcodeEditor:self newCode:nil];
+	[delegate_ passcodeEditorDidCancel:self];
 }
 
 
@@ -178,8 +196,16 @@
 	//NSLog(@"stateMachine_: %@", stateMachine_);
 	
 	if ([stateMachine_ gotCompletionState])
-	{
-		[self.delegate passcodeEditor:self newCode:stateMachine_.newPasscode];
+	{        
+        if (self.callback && [delegate_ respondsToSelector:self.callback]) {
+            [delegate_ performSelector:self.callback];
+        }
+        
+        if (stateMachine_ == enterPasscodeStateMachine_) {
+            [self.delegate passcodeEditorDidUnlock:self];
+        } else {
+            [self.delegate passcodeEditor:self newCode:stateMachine_.newPasscode];            
+        }
 	}
 	else 
 	{

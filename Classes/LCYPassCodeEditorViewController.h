@@ -13,10 +13,15 @@
 @class LCYPassCodeEditorViewController;
 @class LCYChangePasscodeStateMachine;
 @class LCYTurnOffPasscodeStateMachine;
+@class LCYEnterPasscodeStateMachine;
 @class LCYSetPasscodeStateMachine;
 
 @protocol LCYPassCodeEditorDelegate <NSObject>
+
 - (void) passcodeEditor: (LCYPassCodeEditorViewController *) passcodeEditor newCode:(NSString *) newCode;
+- (void) passcodeEditorDidUnlock:(LCYPassCodeEditorViewController *)passcodeEditor;
+- (void) passcodeEditorDidCancel:(LCYPassCodeEditorViewController *)passcodeEditor;
+
 @end
 
 @interface LCYPassCodeEditorViewController : LCYPasscodeInputViewController
@@ -35,6 +40,9 @@
 	LCYChangePasscodeStateMachine  *changePasscodeStateMachine_;
 	LCYTurnOffPasscodeStateMachine *turnOffPasscodeStateMachine_;
 	LCYSetPasscodeStateMachine	*setPasscodeStateMachine_;
+    LCYEnterPasscodeStateMachine *enterPasscodeStateMachine_;
+    
+    SEL callback_; //call on successful unlock/update
 }
 
 @property (nonatomic, assign) IBOutlet id<LCYPassCodeEditorDelegate> delegate;
@@ -45,8 +53,12 @@
 
 @property (nonatomic, copy) NSString* passCode;
 
+@property SEL callback;
+
 - (void) attemptToSetANewPassCode;
 - (void) attemptToDisablePassCode;
+- (void) attemptChangePassCode;
+- (void) attemptToAccessSecureScreen;
 
 - (IBAction) cancel;
 

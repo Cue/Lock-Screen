@@ -44,7 +44,7 @@ static NSString * const K_LOCK_SCREEN_PASSCODE = @"lockScreenPasscode";
 
 	// as we cant store a nil value in the dictionary, we store an empty string to represent no passcode.
 	NSString *passcodeToSave = (self.lockScreenPasscodeIsOn) ? self.lockScreenPasscode : @"" ;
-NSLog(@"passcodeToSave: %@", passcodeToSave);
+//  NSLog(@"passcodeToSave: %@", passcodeToSave);
 	
 	[userDefaults setObject:passcodeToSave forKey:K_LOCK_SCREEN_PASSCODE];
 	

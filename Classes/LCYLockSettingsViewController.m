@@ -124,7 +124,7 @@
 
 - (void) handleTogglePasscode;
 {
-	NSLog(@"%s", _cmd);
+//	NSLog(@"%s", _cmd);
 
 	LCYPassCodeEditorViewController *passCodeEditor = [[LCYPassCodeEditorViewController alloc] initWithNibName:@"LCYPassCodeEditorViewController" bundle:nil];
 	passCodeEditor.passCode = [self currentPasscode];
@@ -181,12 +181,22 @@
 #pragma mark LCYPassCodeEditorDelegate protocol implementation...
 - (void) passcodeEditor: (LCYPassCodeEditorViewController *) passcodeEditor newCode:(NSString *) newCode;
 {
-	NSLog(@"editor: %@ | newCode: %@", passcodeEditor, newCode);
+	//NSLog(@"editor: %@ | newCode: %@", passcodeEditor, newCode);
 	[self.navigationController dismissModalViewControllerAnimated:YES];
 	[self updatePasscodeSettings:newCode];	
 	[self.tableView reloadData];	
 }
 
+- (void) passcodeEditorDidCancel:(LCYPassCodeEditorViewController *)passcodeEditor;
+{
+	[self.navigationController dismissModalViewControllerAnimated:YES];    
+	[self.tableView reloadData];	    
+}
+
+- (void) passcodeEditorDidUnlock:(LCYPassCodeEditorViewController *)passcodeEditor;
+{
+	[self.navigationController dismissModalViewControllerAnimated:YES];        
+}
 
 @end
 

@@ -86,7 +86,7 @@
 {
 	LockScreenAppDelegate *appDelegate =  (LockScreenAppDelegate *)	[[UIApplication sharedApplication] delegate];
 
-	NSLog(@"app passcode is: %@", [appDelegate appLockPasscode]);	
+	//NSLog(@"app passcode is: %@", [appDelegate appLockPasscode]);	
 	
 	if ([appDelegate isAppLocked])
 	{		
@@ -106,12 +106,12 @@
 
 - (void) dummySetting;
 {
-	NSLog(@"%s", _cmd);
+	//NSLog(@"%s", _cmd);
 }
 
 - (void) showLockScreenSettings;
 {
-	NSLog(@"%s", _cmd);	
+	//NSLog(@"%s", _cmd);	
 	LCYLockSettingsViewController *lockSettingsVC = [[LCYLockSettingsViewController alloc] initWithNibName:@"LCYLockSettingsViewController" bundle:nil];
 	[[self navigationController] pushViewController:lockSettingsVC animated:YES];
 	[lockSettingsVC release];
